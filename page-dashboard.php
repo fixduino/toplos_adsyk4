@@ -338,7 +338,12 @@ $dataTotalUllage = $ullage->getTotalUllage();
 										foreach ($dataTopActive as $key => $value):
 									?>
 									<!-- <div class="number"><span><?php //echo '<b>'.$value['id'].'</b> -'.$topLaine ?></span> <span>Tangki Topping</span></div> -->
-									<div class="number"><span><?php if ($value['id']==null){echo '<b>N/A</b>';}else {echo '<b>'.$value['id'].'</b> -'.$topLaine; }?> </span> <span>Tangki Topping</span></div>
+									<div class="number"><span>
+										<?php 
+										if ($value['id']==null){echo '<b>N/A</b>';}elseif (($value['id']!=null) && ($topLaine!=null)) {echo '<b>'.$value['id'].'</b> -'.$topLaine; } elseif (($value['id']!=null) && ($topLaine==null)){echo '<b>'.$value['id'].'</b>'; }
+										
+										?> 
+										</span> <span>Tangki Topping</span></div>
 									<?php
 									endforeach;
 								endif;
@@ -372,7 +377,11 @@ $dataTotalUllage = $ullage->getTotalUllage();
 
 									
 									<!-- <div class="number"><span><?php //echo '<b>'.$value['id'].'</b> -'.$losLaine ?></span> <span>Tangki Lossing</span></div> -->
-									<div class="number"><span><?php if ($value['id']==null){echo '<b>N/A</b>';} else {echo '<b>'.$value['id'].'</b> -'.$losLaine; }?> </span> <span>Tangki Lossing</span></div>
+									<div class="number"><span>
+										<?php 
+										if ($value['id']==null){echo '<b>N/A</b>';} elseif (($value['id']!=null) && ($losLaine!=null)){echo '<b>'.$value['id'].'</b> -'.$losLaine; }elseif (($value['id']!=null) && ($losLaine==null)){echo '<b>'.$value['id'].'</b>'; }
+										?> 
+										</span> <span>Tangki Lossing</span></div>
 									<?php
 									endforeach;
 								endif;
