@@ -46,7 +46,7 @@ class Topping {
     }
     public function getTopActive(){
         $db = getDB();
-        $sth = $db->prepare('SELECT id FROM tb_tank WHERE status="201"');
+        $sth = $db->prepare('SELECT id, count(*) as tangkiTopAct  FROM tb_tank WHERE status="201"');
         $sth->execute();
 
         $dataTopActive = $sth->fetchAll();
@@ -62,7 +62,7 @@ class Topping {
     }
     public function getLosActive(){
         $db = getDB();
-        $sth = $db->prepare('SELECT id FROM tb_tank WHERE status="202"');
+        $sth = $db->prepare('SELECT id, count(*) as tangkiLosAct FROM tb_tank WHERE status="202"');
         $sth->execute();
 
         $dataLosActive = $sth->fetchAll();

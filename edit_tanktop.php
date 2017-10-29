@@ -162,7 +162,7 @@ $d2 = explode("-", $_GET['deretLos']);
 						$LosTankAktifOK=(sprintf('%06d', $tt1_LosAktif)); //tt1_topAktif
 						$ListLosTankOK=(sprintf('%08d', $ListLosTank)); //tt1_topAktif
 						
-						$pa1OK = str_repeat(" ", 6 - strlen($pa1)).$pa1;
+						$pa1OK = str_repeat(" ", 6 - strlen($pa1)).$pa1; //max 100000
 						$pa2OK = str_repeat(" ", 6 - strlen($pa2)).$pa2;
 						$pa3OK = str_repeat(" ", 6 - strlen($pa3)).$pa3;
 						$pa4OK = str_repeat(" ", 6 - strlen($pa4)).$pa4;
@@ -170,7 +170,21 @@ $d2 = explode("-", $_GET['deretLos']);
 						$pa6OK = str_repeat(" ", 6 - strlen($pa6)).$pa6;
 						$pa7OK = str_repeat(" ", 6 - strlen($pa7)).$pa7;
 						$pa8OK = str_repeat(" ", 6 - strlen($pa8)).$pa8;
-						
+
+						$deretLosNya = $_GET['deretLos'];
+						if (($deretLosNya)==0) {
+							// echo $deretLosNya;
+							$deretLosNya="   N/A";
+							// echo $deretLosNya;
+							
+						}
+						$deretTopNya = $_GET['deretTop'];
+						if (($deretTopNya)==0) {
+							// echo $deretTopNya;
+							$deretTopNya="   N/A";
+							// echo $deretTopNya;
+							
+						}
 						/*
 						$pa2OK=(sprintf('%06d', $pa2));*/
 						$T1OK=(sprintf('%06d', $tank1));
@@ -202,7 +216,7 @@ $d2 = explode("-", $_GET['deretLos']);
 					echo "*";
 					echo $tank1.":".$pa1OK.",".$tank2.":".$pa2OK.",".$tank3.":".$pa3OK.",".$tank4.":".$pa4OK.",".$tank5.":".$pa5OK.",".$tank6.":".$pa6OK.",".$tank7.":".$pa7OK.",".$tank8.":".$pa8OK."";
 					// echo ",TOP:".$ListTankTops."|,LOS:".$TankLoss."$,ACTIVE:".$TankTopActiv.",R".$refuler1.":".$qtyReq1OK."^,R".$refuler2.":".$qtyReq2OK."~,R".$refuler3.":".$qtyReq3OK."@,R".$refuler4.":".$qtyReq4OK."";
-					echo ",TOP:".$_GET['deretTop']."|,LOS:".$_GET['deretLos']."$,ACTIVE:".$TankTopActiv.",R".$refuler1.":".$qtyReq1OK."^,R".$refuler2.":".$qtyReq2OK."~,R".$refuler3.":".$qtyReq3OK."@,R".$refuler4.":".$qtyReq4OK."";
+					echo ",TOP:".$deretTopNya."|,LOS:".$deretLosNya."$,ACTIVE:".$TankTopActiv.",R".$refuler1.":".$qtyReq1OK."^,R".$refuler2.":".$qtyReq2OK."~,R".$refuler3.":".$qtyReq3OK."@,R".$refuler4.":".$qtyReq4OK."";
 					// ,".$topTankAktifOK.",".$ListTopTankOK.",".$LosTankAktifOK.",".$ListLosTankOK."]|"; //echo "AKTIFNIH[".$tt1_topAktif."]|";"ZZ[".$tt1.",".$tt2.",".$tt3."]|";
 					echo "#";	
 				

@@ -48,7 +48,6 @@ $dataTotalRefM = $refMaint->getTotalRefM();
 $ullage = new Topping();
 $dataTotalUllage = $ullage->getTotalUllage();
 
-
 ?>
 
 <head>
@@ -104,9 +103,37 @@ $dataTotalUllage = $ullage->getTotalUllage();
 									<i class="lnr lnr-alarm"></i>
 									<span class="notification-dot"></span>
 								</a>
-								<ul class="dropdown-menu notifications">
-									<li class="header"><strong>You have 7 new notifications</strong></li>
+								<ul id='Jumlah' class="dropdown-menu notifications">
+									<!-- <li class="header"><strong>You have 7 new notifications</strong></li>
 									<li>
+										<a href="#">
+											<div class="media">
+												<div class="media-left">
+													<i class="fa fa-fw fa-info-circle text-danger"></i>
+												</div>
+												<div class="media-body">
+													<p class="text">Error on website analytics configurations</p>
+													<span class="timestamp">3 days ago</span>
+												</div>
+											</div>
+										</a>
+									</li> -->
+									<!-- <li id="">
+										<a href="#">
+											<div class="media">
+												<div class="media-left">
+													<i class="fa fa-fw fa-flag-checkered text-muted"></i>
+												</div>
+												<div class="media-body">
+													<p class="text">Your campaign <strong>Holiday Sale</strong> is starting to engage potential customers.</p>
+													<span class="timestamp">24 minutes ago</span>
+												</div>
+											</div>
+										</a>
+									</li> -->
+									<!-- <div style='padding:0px' class='alert alert-default'  id='Jumlah'><span class='glyphicon glyphicon-info-sign'>Info Alert</span></div>	 -->
+
+									<!-- <li>
 										<a href="#">
 											<div class="media">
 												<div class="media-left">
@@ -157,12 +184,13 @@ $dataTotalUllage = $ullage->getTotalUllage();
 												</div>
 											</div>
 										</a>
-									</li>
-									<li>
+									</li> -->
+
+									<!-- <li>
 										<a href="#">
 											<div class="media">
 												<div class="media-left">
-													<i class="fa fa-fw fa-exclamation-circle text-danger"></i>
+													<i class="fa fa-fw fa-info-circle text-danger"></i>
 												</div>
 												<div class="media-body">
 													<p class="text">Error on website analytics configurations</p>
@@ -170,8 +198,10 @@ $dataTotalUllage = $ullage->getTotalUllage();
 												</div>
 											</div>
 										</a>
-									</li>
-									<li class="footer"><a href="#" class="more">See all notifications</a></li>
+									</li> -->
+									<!-- <input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalSetTopLos"> -->
+									<!-- <li class="footer"><a href="page-setting.php" class="more">Setting Ulang</a></li> -->
+									<li class="footer"><a href="#" data-toggle="modal" data-target="#myModalSetTopLos" class="more">Setting Ulang</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -275,7 +305,7 @@ $dataTotalUllage = $ullage->getTotalUllage();
 									if (count($dataTotalLos)):
 										foreach ($dataTotalLos as $key => $value):
 									?>							
-										<div class="number"><span><?php if ($value['totallos']==null){echo '<b>0</b>';} echo '<b>'.$value['totallos'].'</b>'; ?> L</span> <span>Total Lossing</span></div>
+										<div class="number"><span><?php if ($value['totallos']==null){echo '<b>0</b>';}else{ echo '<b>'.$value['totallos'].'</b>'; }?> L</span> <span>Total Lossing</span></div>
 									<?php
 									endforeach;
 									endif;
@@ -307,7 +337,8 @@ $dataTotalUllage = $ullage->getTotalUllage();
 									if (count($dataTopActive)):
 										foreach ($dataTopActive as $key => $value):
 									?>
-									<div class="number"><span><?php echo '<b>'.$value['id'].'</b> -'.$topLaine ?></span> <span>Tangki Topping</span></div>
+									<!-- <div class="number"><span><?php //echo '<b>'.$value['id'].'</b> -'.$topLaine ?></span> <span>Tangki Topping</span></div> -->
+									<div class="number"><span><?php if ($value['id']==null){echo '<b>N/A</b>';}else {echo '<b>'.$value['id'].'</b> -'.$topLaine; }?> </span> <span>Tangki Topping</span></div>
 									<?php
 									endforeach;
 								endif;
@@ -332,7 +363,6 @@ $dataTotalUllage = $ullage->getTotalUllage();
 										endforeach;
 									endif;
 									$losLaine= substr($losLaine, 0, strlen($losLaine) - 1);
-									
 									?>
 
 									<?php
@@ -341,7 +371,8 @@ $dataTotalUllage = $ullage->getTotalUllage();
 									?>
 
 									
-									<div class="number"><span><?php echo '<b>'.$value['id'].'</b> -'.$losLaine ?></span> <span>Tangki Lossing</span></div>
+									<!-- <div class="number"><span><?php //echo '<b>'.$value['id'].'</b> -'.$losLaine ?></span> <span>Tangki Lossing</span></div> -->
+									<div class="number"><span><?php if ($value['id']==null){echo '<b>N/A</b>';} else {echo '<b>'.$value['id'].'</b> -'.$losLaine; }?> </span> <span>Tangki Lossing</span></div>
 									<?php
 									endforeach;
 								endif;
@@ -711,6 +742,95 @@ $dataTotalUllage = $ullage->getTotalUllage();
 	</script>
 	<script type="text/javascript" language="javascript" src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" language="javascript" src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+	<div id="myModalSetTopLos" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Setting Tangki Topping Lossing</h4>
+			</div>
+			<div class="modal-body">
+				<form action="tmb_SetTopLos_act.php" method="post">
+					<div class="form-group">
+						<label>Tangki Top</label>
+						<?php
+									$topLaine="";
+									if (count($dataTopLain)):
+										foreach ($dataTopLain as $key => $value):
+										$topLaine .= $value['id'].'-'; 	
+										endforeach;
+									endif;
+									$topLaine= substr($topLaine, 0, strlen($topLaine) - 1);
+									
+									?>
+
+									<?php
+									if (count($dataTopActive)):
+										foreach ($dataTopActive as $key => $value):
+									?>
+									<!-- <div class="number"><span><?php //echo '<b>'.$value['id'].'</b> -'.$topLaine ?></span> <span>Tangki Topping</span></div> -->
+									<!-- <div class="number"><span><?php// if ($value['id']==null){echo '<b>N/A</b>';}else {echo '<b>'.$value['id'].'</b> -'.$topLaine; }?> </span> <span>Tangki Topping</span></div> -->
+									<input name="deretTop" type="text" class="form-control" placeholder="Deret Tangki Topping Cth. 1-2-3" required="required" value="<?php if ($value['id']==null){echo '0';}else {echo $value['id'].'-'.$topLaine; }?>">
+					
+									<?php
+									endforeach;
+								endif;
+								?>
+						</div>
+					<div class="form-group">
+						<label>Tangki Los</label>
+						<!-- <input name="deretLos" type="text" class="form-control" placeholder="Deret Tangki Lossing Cth. 4-5-6" required="required"> -->
+						
+						<?php
+									$losLaine="";
+									if (count($dataLosLain)):
+										foreach ($dataLosLain as $key => $value):
+										$losLaine .= $value['id'].'-'; 	
+										endforeach;
+									endif;
+									$losLaine= substr($losLaine, 0, strlen($losLaine) - 1);
+									?>
+
+									<?php
+									if (count($dataLosActive)):
+										foreach ($dataLosActive as $key => $value):
+									?>
+
+									
+									<!-- <div class="number"><span><?php //echo '<b>'.$value['id'].'</b> -'.$losLaine ?></span> <span>Tangki Lossing</span></div> -->
+									<!-- <div class="number"><span><?php// if ($value['id']==null){echo '<b>N/A</b>';} else {echo '<b>'.$value['id'].'</b> -'.$losLaine; }?> </span> <span>Tangki Lossing</span></div> -->
+									<input name="deretLos" type="text" class="form-control" placeholder="Deret Tangki Lossing Cth. 4-5-6" required="required" value="<?php if ($value['id']==null){echo '0';} else {echo $value['id'].'-'.$losLaine; }?>">
+					
+									<?php
+									endforeach;
+								endif;
+								?>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+					<input type="submit" class="btn btn-primary" value="Simpan">
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script> //cari jumlah status alert 
+	function sendRequestAlertC(){
+		$.ajax({
+        url: "cariJumlahAlert.php",
+        cache: false,
+        success: function(html){
+				$("#Jumlah").html(html) ;
+				}
+    		});		
+		};
+		setInterval(sendRequestAlertC, 3000); 
+</script>
+
 </body>
 
 </html>

@@ -5,7 +5,7 @@ define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_DATABASE', 'adisucipto');
-define("BASE_URL", "http://localhost:8080/adskholifah/toplos_adsyk3/"); // Eg. http://yourwebsite.com
+define("BASE_URL", "http://localhost:8080/adisucipto/"); // Eg. http://yourwebsite.com
 
 
 function getDB() 

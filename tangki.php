@@ -59,9 +59,12 @@ INNER JOIN tb_act ON tb_tank.status = tb_act.id
         $sth = $db->prepare('SELECT tb_plan.* FROM tb_plan GROUP BY tb_plan.id ORDER BY id DESC limit 1');
         $sth->execute();
 
-        $data = $sth->fetchAll();
-        return $data;
+        $dataPlan = $sth->fetchAll();
+        return $dataPlan;
     }
+
+  
+
     public function getLastLoss(){
         // $sth = $this->DBH->prepare('SELECT id,tank,level,max_level,pa,max_pa,status,time,deadstok,sisipan FROM tb_tank');
         $db = getDB();

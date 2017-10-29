@@ -435,18 +435,6 @@ include 'admin/config.php';
 			</div>
 			<div class="modal-body">
 				<form action="tmb_plan_act.php" method="post">
-					<!-- <div class="form-group">
-						<label>Plan Id</label>
-						<input name="planid" type="text" class="form-control" placeholder="Plan Id" value="<?php 
-									// $start = 'PTMADS';
-									// $characters = array_merge(range('0','9')); //range('A','Z'), 
-									// for ($i = 0; $i < 6; $i++) {
-									// 	$rand = mt_rand(0, count($characters)-1);
-									// 	$start .= $characters[$rand];
-									// }
-									// echo $start;
-									?>" >
-					</div> -->
 					<div class="form-group">
 						<label>Tangki Top</label>
 						<input name="deretTop" type="text" class="form-control" placeholder="Deret Tangki Topping Cth. 1-2-3" required="required">
