@@ -397,13 +397,13 @@ include 'admin/config.php';
 					<div class="form-group">
 						<label>Tangki Maint</label>
 							<div class="form-group">
-							<select id="multiselect2" name="tankm" class="multiselect multiselect-custom" multiple="multiple" required="required">
+							<select id="multiselect2" name="tankm[]" class="multiselect multiselect-custom" multiple="multiple" required="required">
 								<?php if (count($data)):
 									 	$i = 0;
 									 	foreach ($data as $key => $value):
 									?>
 								
-									<option> <?php echo $value['tank']?></option>
+									<option > <?php echo $value['tank']?></option>
 								<?php
 								if($i++ == 7) break;
 									endforeach;
@@ -415,7 +415,7 @@ include 'admin/config.php';
 					<div class="form-group">
 						<label>Refuler Maint</label>
 							<div class="form-group">
-							<select id="multiselect1" name="refm" class="multiselect multiselect-custom" multiple="multiple" required="required">
+							<select id="multiselect1" name="refm[]" class="multiselect multiselect-custom" multiple="multiple" required="required">
 								<?php if (count($dataRef)):
 									 	$i = 0;
 									 	foreach ($dataRef as $key => $value):
