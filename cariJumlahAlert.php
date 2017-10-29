@@ -21,7 +21,7 @@ $soundact="";
     $soundact="DANGER!!!";
         
       
-      echo "<strong> Tangki ".$result['id']." Mau Habis </strong></li>";
+      echo "<strong> Tangki ".$result['id']." Mau Habis!!! </strong></li>";
       
         echo "<li>";
         echo "  <a href='#'>";
@@ -31,7 +31,8 @@ $soundact="";
         echo "      </div>";
         echo "      <div class='media-body'>";
         echo "        <p class='text text-danger'>Warning!";
-        echo "        <p class='text'>Stok Aktual ".number_format($result['pa'])."L. Sisa ".number_format($result['selisih'])."L lagi menuju Unpumpable ".number_format($result['patarget'])."L!</p>";
+        echo "        <p class='text'>Stok Aktual Tangki Topping Aktif <b>".number_format($result['pa'])."L</b>. ";
+        echo "        <p class='text'>Sisa <b>".number_format($result['selisih'])."L</b> lagi menuju Unpumpable <b>".number_format($result['patarget'])."L</b></p>";
         echo "        <span class='timestamp'>".$tgljam."</span>";
         echo "      </div>";
         echo "    </div>";
@@ -63,9 +64,10 @@ $soundact="";
   {
   $soundact="Safe";
       
-        echo"alert-success'><span><center><img class='glyphicon-thumbs-down' src='../images/shield-ok-icon-95223-iloveimg-resized(1).png'></center></span></div>";	
+        // echo"alert-success'><span><center><img class='glyphicon-thumbs-down' src='../images/shield-ok-icon-95223-iloveimg-resized(1).png'></center></span></div>";	
         echo"</br>";
-        echo"<center><a style='color:green'> Safe Area <span class='glyphicon glyphicon-ok-circle text-center'></span></a></center>";
+        echo"<center><a style='color:black'> Stok Tangki  ".$result['id']." </a></center>";
+        echo"<center><a style='color:green'> Aman <span class='glyphicon glyphicon-ok-circle text-center'></span></a></center>";
        
   }
 
