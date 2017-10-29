@@ -194,7 +194,7 @@ include 'admin/config.php';
 					
                     <div class="col-md-3">
 						<div class="panel-content">
-							<h2 class="heading"><i class="fa fa-database"></i> Setup Tangki</h2>
+							<h2 class="heading"><i class="fa fa-database" style="color:#7CAC25;"></i> Setup Tangki</h2>
 							
 							<?php
 									if (count($data)):
@@ -233,7 +233,7 @@ include 'admin/config.php';
                     
                     <div class="col-md-4">
 						<div class="panel-content">
-							<h2 class="heading"><i class="fa fa-square"></i> Plan this day!</h2>
+							<h2 class="heading"><i class="fa fa-list-alt" style="color:#7CAC25;"></i> Plan this day!</h2>
 							<?php
 									if (count($dataPlan)):
 										foreach ($dataPlan as $key => $value):
@@ -288,7 +288,7 @@ include 'admin/config.php';
 
 					<div class="col-md-4">
 						<div class="panel-content">
-							<h2 class="heading"><i class="fa fa-square"></i> Input Lossing!</h2>
+							<h2 class="heading"><i class="fa fa-arrow-down" style="color:#7CAC25;"></i> Input Lossing!</h2>
 							<?php
 									if (count($dataLastLoss)):
 										foreach ($dataLastLoss as $key => $value):
@@ -299,8 +299,8 @@ include 'admin/config.php';
 								</div>
 								<br>
 								<div class="input-group">
-									<span class="input-group-btn"><button class="btn btn-warning" type="button" >Quantity</button></span>
-									<input name="qty_req" class="form-control" type="text" value="<?php echo number_format($value['qty_req']); echo ' L'; ?>" disabled>
+									<span class="input-group-btn"><button class="btn btn-warning" type="button" >Quantity (L)</button></span>
+									<input name="qty_req" class="form-control" type="text" value="<?php echo number_format($value['qty_req']); ?>" disabled>
 								</div>
 								<br>
 								<div class="input-group">
@@ -337,7 +337,7 @@ include 'admin/config.php';
 
                     <div class="col-md-3">
 						<div class="panel-content">
-							<h2 class="heading"><i class="fa fa-truck"></i> Setup Refuler</h2>
+							<h2 class="heading"><i class="fa fa-truck" style="color:#7CAC25;"></i> Setup Refuler</h2>
 							<div class="input-group">
 								<input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalRef">
 							</div>
@@ -346,7 +346,7 @@ include 'admin/config.php';
 					</div>
 					<div class="col-md-3">
 						<div class="panel-content">
-							<h2 class="heading"><i class="fa fa-truck"></i> Setup Bridger</h2>
+							<h2 class="heading"><i class="fa fa-truck" style="color:#7CAC25;"></i> Setup Bridger</h2>
 							<div class="input-group">
 								<input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalBridger">
 							</div>
@@ -430,30 +430,6 @@ include 'admin/config.php';
 								</select>
 							</div>	
 					</div>	
-
-								<!-- <select id="multiselect2" name="multiselect2[]" class="multiselect multiselect-custom" multiple="multiple">
-										<option value="cheese">Cheese</option>
-										<option value="tomatoes">Tomatoes</option>
-										<option value="mozarella">Mozzarella</option>
-										<option value="mushrooms">Mushrooms</option>
-										<option value="pepperoni">Pepperoni</option>
-										<option value="onions">Onions</option>option value="cheese">Cheese</option>
-										<option value="tomatoes2">Tomatoes2</option>
-										<option value="mozarella2">Mozzarella2</option>
-										<option value="mushrooms2">Mushrooms2</option>
-										<option value="pepperoni2">Pepperoni2</option>
-										<option value="onions2">Onions2</option>
-									</select> -->
-				
-					<!-- <div class="form-group">
-						<select id="multiselect-color" name="multiselect9[]" class="multiselect multiselect-custom" multiple="multiple">
-								<option value="cheese">Cheese</option>
-								<option value="tomatoes">Tomatoes</option>
-								<option value="mozarella">Mozzarella</option>
-						</select>	
-					</div>	 -->
-																			
-
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -531,7 +507,7 @@ include 'admin/config.php';
 				<form action="tmb_loss_act.php" method="post">
 					
 					<div class="input-group">
-						<span class="input-group-btn"><button class="btn btn-warning" type="button" >Quantity</button></span>
+						<span class="input-group-btn"><button class="btn btn-warning" type="button" >Quantity (L)</button></span>
 						<input name="qty_req" class="form-control" type="text" placeholder="Masukkan Quantity Lossing (L) cth. 2400" required="required">
 					</div>
 					<br>
@@ -595,7 +571,7 @@ include 'admin/config.php';
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Setting Refuler</h4>
+				<h4 class="modal-title">Edit Refuler</h4>
 			</div>
 			<div class="modal-body">
 				<form action="tmb_ref_act.php" method="post">
@@ -658,7 +634,7 @@ include 'admin/config.php';
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Setting Bridger</h4>
+				<h4 class="modal-title">Edit Bridger</h4>
 			</div>
 			<div class="modal-body">
 				<form action="tmb_bridger_act.php" method="post">

@@ -267,7 +267,7 @@ $dataTotalUllage = $ullage->getTotalUllage();
 				<!-- WEBSITE ANALYTICS -->
 				<div class="dashboard-section">
 					<div class="section-heading clearfix">
-						<h2 class="section-title"><i class="fa fa-pie-chart"></i> Topping &amp; Lossing Hari ini</h2>
+						<h2 class="section-title"><i class="fa fa-pie-chart" style="color:#7CAC25"></i> Topping &amp; Lossing Hari ini</h2>
 						<!--<a href="#" class="right">View Full Analytics Reports</a> -->
 					</div>
 					<div class="panel-content">
@@ -394,7 +394,7 @@ $dataTotalUllage = $ullage->getTotalUllage();
 						<div class="col-md-4">
 							<!-- TRAFFIC SOURCES -->
 							<div class="panel-content">
-								<h2 class="heading"><i class="fa fa-square"></i> Stok Tangki</h2>
+								<h2 class="heading"><i class="fa fa-database"  style="color:#7CAC25"></i> Stok Tangki</h2>
 								<div id="demo-pie-chart" class="ct-chart"></div>
 								<?php
 									if (count($dataTotalUllage)):
@@ -413,7 +413,7 @@ $dataTotalUllage = $ullage->getTotalUllage();
 						<div class="col-md-4">
 							<!-- REFERRALS -->
 							<div class="panel-content">
-								<h2 class="heading"><i class="fa fa-square"></i> Rencana Hari Ini</h2>
+								<h2 class="heading"><i class="fa fa-list-alt"  style="color:#7CAC25"></i> Rencana Hari Ini</h2>
 								<ul class="list-unstyled list-referrals">
 									<li>
 									<?php
@@ -470,11 +470,11 @@ $dataTotalUllage = $ullage->getTotalUllage();
 						</div>
 						<div class="col-md-4">
 							<div class="panel-content">
-								<!-- BROWSERS -->
-								<h2 class="heading"><i class="fa fa-square"></i> Topping Terakhir</h2>
+								<!-- BROWSERS  style="background-color:rgb(97, 201, 233);"-->
+								<h2 class="heading"><i class="fa fa-truck"  style="color:#7CAC25"></i> Topping Terakhir</h2>
 								<div class="table-responsive">
-									<table id="last4topping" class="table no-margin">
-										<thead>
+									<table id="last4topping" class="table no-margin table-striped table-bordered table-hover">
+										<thead >
 											<tr>
 												<th>REFULER</th>
 												<th>QTY</th>
@@ -493,13 +493,14 @@ $dataTotalUllage = $ullage->getTotalUllage();
 												<td><?php echo $value['tank_asal']?></td>
 											</tr>
 											<?php
-													if($i++ == 3) break;
+													if($i++ == 5) break;
 													endforeach;
 												endif;
 											?>
 										</tbody>
 									</table>
 								</div>
+
 								<!-- END BROWSERS -->
 							</div>
 						</div>

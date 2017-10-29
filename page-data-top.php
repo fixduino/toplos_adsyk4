@@ -144,7 +144,7 @@ $dataAllLoss = $lossing->getAllLoss();
 
 								<div class="panel-content">
 									<!-- <h4>Data Topping </h4> -->
-									<h4 class="heading"><i class="fa fa-arrow-down" style="color:green"></i> Data Topping</h4>
+									<h4 class="heading"><i class="fa fa-arrow-up" style="color:#0E9BE2"></i> Data Topping</h4>
 									<div class="table-responsive">
 										<table id="display-topping" class="table no-margin table-striped table-bordered table-hover">
 											<thead  style="background-color:rgb(97, 201, 233);"> 
@@ -179,7 +179,7 @@ $dataAllLoss = $lossing->getAllLoss();
 
 								<div class="panel-content">
 									<!-- <h4>Data Lossing </h4> -->
-									<h4 class="heading"><i class="fa fa-arrow-up" style="color:green"></i> Data Lossing</h4>
+									<h4 class="heading"><i class="fa fa-arrow-down" style="color:#0E9BE2"></i> Data Lossing</h4>
 									<div class="table-responsive">
 										<table id="display-lossing" class="table no-margin table-striped table-bordered table-hover">
 											<thead  style="background-color:rgb(218, 221, 50);"> 

@@ -167,7 +167,7 @@ $dataBrid = $bridger->getBridgerAll();
 						</div>
 						<div class="panel-content">
 							<!-- <h4>Detail Tangki</h4> -->
-							<h4 class="heading"><i class="fa fa-database" style="color:red"></i> Detail Tangki</h4>
+							<h4 class="heading"><i class="fa fa-database" style="color:#0E9BE2"></i> Detail Tangki</h4>
 							<div class="table-responsive">
 								<table id="display-tangki" class="table no-margin">
 									<thead>
@@ -210,7 +210,7 @@ $dataBrid = $bridger->getBridgerAll();
 
 						<div class="panel-content">
 							<!-- <h4><b>Data Refuler</b></h4> -->
-							<h4 class="heading"><i class="fa fa-truck" style="color:red"></i> Data Refuler</h4>
+							<h4 class="heading"><i class="fa fa-truck" style="color:#0E9BE2"></i> Data Refuler</h4>
 							
 							<div class="table-responsive">
 								<table id="display-refuler" class="table no-margin">
@@ -245,7 +245,7 @@ $dataBrid = $bridger->getBridgerAll();
 						</div>
 						<div class="panel-content">
 							<!-- <h4><b>Data Bridger</b></h4> -->
-							<h4 class="heading"><i class="fa fa-truck" style="color:red"></i> Data Bridger</h4>
+							<h4 class="heading"><i class="fa fa-truck" style="color:#0E9BE2"></i> Data Bridger</h4>
 							
 							<div class="table-responsive">
 								<table id="display-bridger" class="table no-margin">
