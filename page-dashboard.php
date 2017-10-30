@@ -12,6 +12,8 @@ require_once 'topping.php';
 require_once 'tangki.php';
 $topping = new Topping();
 $dataRecentTop = $topping->get4();
+$lossing = new Topping();
+$dataRecentLos = $lossing->get5RecentLos();
 
 $topA = new Topping();
 $dataTopActive = $topA ->getTopActive();
@@ -32,6 +34,28 @@ $dataTotalTop = $totalTopE ->getTotalTop();
 $totalLosF = new Topping();
 $dataTotalLos = $totalLosF ->getTotalLos();
 
+$tankMaint = new Topping();
+$dataTotalTankM = $tankMaint->getTotalTankM();
+$refMaint = new Topping();
+$dataTotalRefM = $refMaint->getTotalRefM();
+$ullage = new Topping();
+$dataTotalUllage = $ullage->getTotalUllage();
+$DetailUsers = new Topping();
+$dataDetailUser = $DetailUsers->getDataUser();
+$listUserType = new Topping();
+$dataUserType = $listUserType->getDataUserType();
+
+$TopLastWeek = new Topping();
+$dataTopLastWeek = $TopLastWeek->getDataTopLastWeek();
+$TopThisWeek = new Topping();
+$dataTopThisWeek = $TopThisWeek->getDataTopThisWeek();
+
+$LosLastWeek = new Topping();
+$dataLosLastWeek = $LosLastWeek->getDataLosLastWeek();
+$LosThisWeek = new Topping();
+$dataLosThisWeek = $LosThisWeek->getDataLosThisWeek();
+
+
 // $totalTopE = new Topping();
 // $dataTotalTop = $topping->getTotalTop();
 
@@ -41,12 +65,7 @@ $dataPlan = $planthisday->getPlan();
 $dataTangki = new Tangki();
 $data = $dataTangki->getAll();
 
-$tankMaint = new Topping();
-$dataTotalTankM = $tankMaint->getTotalTankM();
-$refMaint = new Topping();
-$dataTotalRefM = $refMaint->getTotalRefM();
-$ullage = new Topping();
-$dataTotalUllage = $ullage->getTotalUllage();
+
 
 ?>
 
@@ -104,103 +123,6 @@ $dataTotalUllage = $ullage->getTotalUllage();
 									<span class="notification-dot"></span>
 								</a>
 								<ul id='Jumlah' class="dropdown-menu notifications">
-									<!-- <li class="header"><strong>You have 7 new notifications</strong></li>
-									<li>
-										<a href="#">
-											<div class="media">
-												<div class="media-left">
-													<i class="fa fa-fw fa-info-circle text-danger"></i>
-												</div>
-												<div class="media-body">
-													<p class="text">Error on website analytics configurations</p>
-													<span class="timestamp">3 days ago</span>
-												</div>
-											</div>
-										</a>
-									</li> -->
-									<!-- <li id="">
-										<a href="#">
-											<div class="media">
-												<div class="media-left">
-													<i class="fa fa-fw fa-flag-checkered text-muted"></i>
-												</div>
-												<div class="media-body">
-													<p class="text">Your campaign <strong>Holiday Sale</strong> is starting to engage potential customers.</p>
-													<span class="timestamp">24 minutes ago</span>
-												</div>
-											</div>
-										</a>
-									</li> -->
-									<!-- <div style='padding:0px' class='alert alert-default'  id='Jumlah'><span class='glyphicon glyphicon-info-sign'>Info Alert</span></div>	 -->
-
-									<!-- <li>
-										<a href="#">
-											<div class="media">
-												<div class="media-left">
-													<i class="fa fa-fw fa-flag-checkered text-muted"></i>
-												</div>
-												<div class="media-body">
-													<p class="text">Your campaign <strong>Holiday Sale</strong> is starting to engage potential customers.</p>
-													<span class="timestamp">24 minutes ago</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<div class="media">
-												<div class="media-left">
-													<i class="fa fa-fw fa-exclamation-triangle text-warning"></i>
-												</div>
-												<div class="media-body">
-													<p class="text">Campaign <strong>Holiday Sale</strong> is nearly reach budget limit.</p>
-													<span class="timestamp">2 hours ago</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<div class="media">
-												<div class="media-left">
-													<i class="fa fa-fw fa-bar-chart text-muted"></i>
-												</div>
-												<div class="media-body">
-													<p class="text">Website visits from Facebook is 27% higher than last week.</p>
-													<span class="timestamp">Yesterday</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<div class="media">
-												<div class="media-left">
-													<i class="fa fa-fw fa-check-circle text-success"></i>
-												</div>
-												<div class="media-body">
-													<p class="text">Your campaign <strong>Holiday Sale</strong> is approved.</p>
-													<span class="timestamp">2 days ago</span>
-												</div>
-											</div>
-										</a>
-									</li> -->
-
-									<!-- <li>
-										<a href="#">
-											<div class="media">
-												<div class="media-left">
-													<i class="fa fa-fw fa-info-circle text-danger"></i>
-												</div>
-												<div class="media-body">
-													<p class="text">Error on website analytics configurations</p>
-													<span class="timestamp">3 days ago</span>
-												</div>
-											</div>
-										</a>
-									</li> -->
-									<!-- <input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalSetTopLos"> -->
-									<!-- <li class="footer"><a href="page-setting.php" class="more">Setting Ulang</a></li> -->
 									<li class="footer"><a href="#" data-toggle="modal" data-target="#myModalSetTopLos" class="more">Setting Ulang</a></li>
 								</ul>
 							</li>
@@ -231,8 +153,11 @@ $dataTotalUllage = $ullage->getTotalUllage();
 					<div class="dropdown">
 						<a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong><?php echo $userDetails->username; ?></strong> <i class="fa fa-caret-down"></i></a>
 						<ul class="dropdown-menu dropdown-menu-right account">
-							<li><a href="#">My Profile</a></li>
-							<li><a href="#">Settings</a></li>
+							<!-- <li><a href="#">My Profile</a></li> -->
+							<li><a href="#" data-toggle="modal" data-target="#myModalProfile">My Profile</a></li>
+							<!-- <button style="margin-bottom:20px" data-toggle="modal" data-target="#myModalPa" class="btn btn-info col-md-2"><span class="glyphicon glyphicon-plus"></span></button> -->
+
+							<!-- <li><a href="#">Settings</a></li> -->
 							<li class="divider"></li>
 							<li><a href="logout.php">Logout</a></li>
 						</ul>
@@ -285,7 +210,7 @@ $dataTotalUllage = $ullage->getTotalUllage();
 									if (count($dataTotalTop)):
 										foreach ($dataTotalTop as $key => $value):
 									?>							
-										<div class="number"><span><?php if ($value['totaltop']==null){echo '<b>0</b>';} echo '<b>'.$value['totaltop'].'</b>'; ?> L</span> <span>Total Topping</span></div>
+										<div class="number"><span><?php if ($value['totaltop']==null){echo '<b>0</b>';} else {echo '<b>'.number_format($value['totaltop']).'</b>';} ?> L</span> <span>Total Topping</span></div>
 									<?php
 									endforeach;
 									endif;
@@ -305,7 +230,7 @@ $dataTotalUllage = $ullage->getTotalUllage();
 									if (count($dataTotalLos)):
 										foreach ($dataTotalLos as $key => $value):
 									?>							
-										<div class="number"><span><?php if ($value['totallos']==null){echo '<b>0</b>';}else{ echo '<b>'.$value['totallos'].'</b>'; }?> L</span> <span>Total Lossing</span></div>
+										<div class="number"><span><?php if ($value['totallos']==null){echo '<b>0</b>';}else{ echo '<b>'.number_format($value['totallos']).'</b>'; }?> L</span> <span>Total Lossing</span></div>
 									<?php
 									endforeach;
 									endif;
@@ -401,8 +326,20 @@ $dataTotalUllage = $ullage->getTotalUllage();
 										foreach ($dataTotalUllage as $key => $value):
 									?>
 
-								<span class="stok text-info" ><?php echo 'Total Stok: <b>'.number_format($value['totalstok']).'</b> L'?></span>
-								<span class="ullage text-danger" ><?php echo 'Total Ullage: <b>'.number_format($value['totalullage']).'</b> L'?></span>
+								<!-- <span class="stok text-info" ><?php echo 'Total Stok: <b>'.number_format($value['totalstok']).'</b> L'?></span> 
+								 <span class="ullage text-danger" ><?php echo 'Total Ullage: <b>'.number_format($value['totalullage']).'</b> L'?></span>
+								 -->
+								<div class="input-group" >
+									<span class="input-group-addon danger" ><?php echo 'Total Stok' ?></span>
+									<input name="tankstok" class="form-control" style="color:red" placeholder="" type="text" value="<?php  echo number_format($value['totalstok']) ?>" required="required" >
+									<span class="input-group-addon danger">Liter</span>
+								</div>
+								<br>
+								<div class="input-group">
+									<span class="input-group-addon danger"><?php echo 'Total Ullage' ?></span>
+									<input name="tankullage" class="form-control" style="color:red" placeholder="" type="text" value="<?php  echo number_format($value['totalullage']) ?>" required="required" >
+									<span class="input-group-addon danger">Liter</span>
+								</div>
 								<?php
 									endforeach;
 								endif;
@@ -489,7 +426,7 @@ $dataTotalUllage = $ullage->getTotalUllage();
 											?>
 											<tr id="<?php echo $value['id']?>">
 												<td>REF <?php echo $value['refnya']?></td>
-												<td><?php echo $value['qty_req']?> KL</td>
+												<td><?php echo $value['qty_req']?> L</td>
 												<td><?php echo $value['tank_asal']?></td>
 											</tr>
 											<?php
@@ -507,7 +444,159 @@ $dataTotalUllage = $ullage->getTotalUllage();
 					</div>
 				</div>
 				<!-- END WEBSITE ANALYTICS -->
-				
+				<!-- SALES SUMMARY -->
+				<div class="dashboard-section">
+					<div class="section-heading clearfix">
+						<h2 class="section-title"><i class="fa fa-shopping-basket"></i> Ringkasan Penjualan</h2>
+						<a href="page-data-top.php" class="right">Lihat Data Topping Lossing</a>
+					</div>
+					<div class="row">
+						<!-- <div class="col-md-3">
+							<div class="panel-content">
+								<h3 class="heading"><i class="fa fa-square"></i> Hari ini</h3>
+								<ul class="list-unstyled list-justify large-number">
+									<li class="clearfix">Rupiah <span>Rp215</span></li>
+									<li class="clearfix">Topping  <span>47 L</span></li>
+								</ul>
+							</div>
+						</div> -->
+						<div class="col-md-9">
+							<div class="panel-content">
+								<h3 class="heading"><i class="fa fa-square"></i> Sales Performance</h3>
+								<div class="row">
+									<div class="col-md-6">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>&nbsp;</th>
+													<th>Last Week</th>
+													<th>This Week</th>
+													<th>Change</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!-- <tr>
+													<th>Earnings</th>
+													<td>$2752</td>
+													<td><span class="text-info">$3854</span></td>
+													<td><span class="text-success">40.04%</span></td>
+												</tr> -->
+												<tr>
+													<th>Topping</th>
+													
+													<?php
+													if (count($dataTopLastWeek)):
+													foreach($dataTopLastWeek as $key => $value1):
+													?>
+													<td><?php echo number_format($value1['totTopLastWeek'])?>L</td>
+												
+
+													<?php
+													if (count($dataTopThisWeek)):
+													foreach($dataTopThisWeek as $key => $value):
+													?>
+													<td><span class="text-info"><?php echo number_format($value['totTopThisWeek'])?>L</span></td>
+
+													<!-- <td><span class="text-info">3000</span></td> -->
+													<td><span class="text-success"><?php $selisih = $value1['totTopLastWeek'] - $value['totTopThisWeek']; $gapPersen=($selisih/($value1['totTopLastWeek'])*100); echo  number_format($gapPersen,1);  ?>%</span></td>
+													
+													<?php
+														endforeach;
+													endif;
+													?>
+
+													<?php
+														endforeach;
+													endif;
+													?>
+												</tr>
+												<tr>
+													<th>Lossing</th>
+													
+													<?php
+													if (count($dataLosLastWeek)):
+													foreach($dataLosLastWeek as $key => $value2):
+													?>
+													<td><?php echo number_format($value2['totLosLastWeek'])?>L</td>
+												
+
+													<?php
+													if (count($dataLosThisWeek)):
+													foreach($dataLosThisWeek as $key => $value3):
+													?>
+													<td><span class="text-info"><?php echo number_format($value3['totLosThisWeek'])?>L</span></td>
+
+													<!-- <td><span class="text-info">3000</span></td> -->
+													<td><span class="text-success"><?php $selisih = $value2['totLosLastWeek'] - $value3['totLosThisWeek']; $gapPersen=($selisih/($value2['totLosLastWeek'])*100); echo  number_format($gapPersen,1);  ?>%</span></td>
+													
+													<?php
+														endforeach;
+													endif;
+													?>
+
+													<?php
+														endforeach;
+													endif;
+													?>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="col-md-6">
+										<div id="chart-sales-performance">Loading ...</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<div class="panel-content">
+								<h3 class="heading"><i class="fa fa-square"></i> Lossing  Terakhir</h3>
+								<div class="table-responsive">
+									<table class="table table-striped no-margin">
+										<thead>
+											<tr>
+												<th>Order No.</th>
+												<th>Bridger</th>
+												<th>Quantity</th>
+												<th>Tank Tujuan</th>
+												<th>Tanggal &amp; Waktu</th>
+												<!-- <th>Status</th> -->
+											</tr>
+										</thead>
+										<tbody>
+											<?php
+												if (count($dataRecentLos)):
+													$i = 0;
+													foreach($dataRecentLos as $key => $value):
+											?>
+											<tr id="<?php echo $value['id']?>">
+												<td> <?php echo $value['id']?></td>
+												<td> <?php echo $value['bridnya']?></td>
+												<td><?php echo $value['qty_req']?> L</td>
+												<td><?php echo $value['tangkinya']?></td>
+												<td><?php echo $value['time']?></td>
+											</tr>
+											<?php
+													if($i++ == 5) break;
+													endforeach;
+												endif;
+											?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="col-md-4">
+							<div class="panel-content">
+								<h3 class="heading"><i class="fa fa-square"></i> Top Tank This Week</h3>
+								<div id="chart-top-products" class="chartist"></div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<!-- END SALES SUMMARY -->
 			</div>
 		</div>
 		<!-- END MAIN CONTENT -->
@@ -705,12 +794,26 @@ $dataTotalUllage = $ullage->getTotalUllage();
 
 
 		// top products
+		// var dataStackedBar = {
+		// 	labels: ['REF1', 'Q2', 'Q3'],
+		// 	series: [
+		// 		[800000, 1200000, 1400000],
+		// 		[200000, 400000, 500000],
+		// 		[100000, 200000, 400000]
+		// 	]
+		// };
 		var dataStackedBar = {
-			labels: ['Q1', 'Q2', 'Q3'],
+			labels: ['D1', 'D2', 'D3','D4', 'D5', 'D6', 'D7'],
 			series: [
-				[800000, 1200000, 1400000],
-				[200000, 400000, 500000],
-				[100000, 200000, 400000]
+				[10000, 10000, 10000,10000, 10000, 10000,10000],
+				[10000, 10000, 10000,10000, 10000, 10000,10000],
+				[10000, 10000, 10000,10000, 10000, 10000,10000],
+				[10000, 10000, 10000,10000, 10000, 10000,10000],
+				[15000, 15000, 15000,15000, 15000, 15000,15000],
+				[16000, 16000, 16000,16000, 16000, 16000,16000],
+				[16000, 16000, 16000,16000, 16000, 16000,16000],
+				[16000, 16000, 16000,16000, 16000, 16000,16000]
+				
 			]
 		};
 
@@ -730,7 +833,7 @@ $dataTotalUllage = $ullage->getTotalUllage();
 					appendToBody: true
 				}),
 				Chartist.plugins.legend({
-					legendNames: ['Phone', 'Laptop', 'PC']
+					legendNames: ['T1', 'T2', 'T3','T4', 'T5', 'T6','T7', 'T8']
 				})
 			]
 		}).on('draw', function(data) {
@@ -753,6 +856,254 @@ $dataTotalUllage = $ullage->getTotalUllage();
 	<script type="text/javascript" language="javascript" src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" language="javascript" src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
+	
+<!-- modal input -->
+<div id="myModalProfile" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">My Profile</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<!-- <div class="section-heading">
+						<h1 class="page-title">User Profile</h1>
+					</div> -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active"><a href="#myprofile" role="tab" data-toggle="tab">Profile</a></li>
+						<?php if ($userDetails->type=='superuser'){
+							echo '<li><a href="#account" role="tab" data-toggle="tab">List User</a></li>';
+							echo '<li><a href="#addnew" role="tab" data-toggle="tab">Add user </a></li>';
+
+						} else{}; ?>
+						
+						
+					</ul>
+				</div>
+				<!-- <form> -->
+				<div class="tab-content content-profile">
+						<!-- MY PROFILE -->
+						<div class="tab-pane fade in active" id="myprofile">
+							<form action="tmb_userEdit_act.php" method="post">
+								<div class="profile-section">
+									<h2 class="profile-heading">Profile Photo</h2>
+									<div class="media">
+										<div class="media-left">
+											<img src="assets/img/<?php echo $userDetails->foto; ?>" class="user-photo media-object" alt="User">
+										</div>
+										<div class="media-body">
+											<p>Upload photo.
+												<br> <em>Image should be at least 140px x 140px</em></p>
+											<button type="button" class="btn btn-default-dark" id="btn-upload-photo">Upload Photo</button>
+											<input type="file" id="filePhoto" name="ufoto" class="sr-only">
+										</div>
+									</div>
+								</div>
+								<div class="profile-section">
+									<!-- <h2 class="profile-heading">Basic Information</h2> -->
+									<div class="clearfix">
+										<!-- LEFT SECTION -->
+										<div class="left">
+											<div class="form-group">
+												<label>First Name</label>
+												<input type="text" name="uname" class="form-control" value="<?php echo $userDetails->username; ?>" required="required" >
+											</div>
+											<div class="form-group">
+												<label>Type</label>
+												<!-- <input type="text" name="utype" class="form-control" value="<?php //echo $userDetails->type; ?>" required="required"> -->
+												<select class="form-control" name="utype" required="required">
+													<?php
+													if (count($dataUserType)):
+														$i = 0;
+														foreach ($dataUserType as $key => $value):
+													?>		
+															<option> <?php 
+															if (($userDetails->type=='superuser') and ($userDetails->username=='admin')){ echo 'superuser';} 
+															elseif (($userDetails->type=='superuser') && ($userDetails->username!='admin')){ echo $value['type'];}	
+															else { echo 'operator';}
+															?></option>
+													<?php
+													if($i++ == 1) break;
+													endforeach;
+													endif;
+													?>
+												</select>
+											</div>
+											<div class="form-group">
+												<label>Password</label>
+												<input type="password" name="upass" class="form-control" required="required">
+											</div>
+											<div class="form-group">
+													<input type="submit" class="btn btn-primary" value="Update">	
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</form >
+						</div>
+						<!-- edit other user -->
+						<div class="tab-pane fade" id="account">
+							<form action="tmb_userEdit2_act.php" method="post">
+							<!-- <div class="profile-section">
+								<h2 class="profile-heading">Profile Photo</h2>
+								<div class="media">
+									<div class="media-left">
+										<img src="assets/img/<?php echo $userDetails->foto; ?>" class="user-photo media-object" alt="User">
+									</div>
+									<div class="media-body">
+										<p>Upload photo.
+											<br> <em>Image should be at least 140px x 140px</em></p>
+										<button type="button" class="btn btn-default-dark" id="btn-upload-photo2">Upload Photo</button>
+										<input type="file" id="filePhoto2" name="ufoto2" class="sr-only">
+									</div>
+								</div>
+							</div> -->
+							<div class="form-group">
+								<label for="exampleInputFile" class="control-label">File Foto</label>
+								<input type="file" name="ufoto2" id="exampleInputFile">
+								<p class="help-block"><em>Cari file foto.</em></p>
+							</div>
+							<div class="profile-section">
+								<!-- <h2 class="profile-heading">Basic Information</h2> -->
+								<div class="clearfix">
+									<!-- LEFT SECTION -->
+									<div class="left">
+											<div class="form-group">
+												<label>Username</label>
+												<select class="form-control" name="uname2" required="required">
+												<?php
+												if (count($dataDetailUser)):
+													foreach ($dataDetailUser as $key => $value):
+												?>		
+														<option> <?php echo $value['username']; ?></option>
+												<?php
+												endforeach;
+												endif;
+												?>
+												</select>
+											</div>
+											<div class="form-group">
+												<label>Type</label>
+												<select class="form-control" name="utype2" required="required">
+												<?php
+												if (count($dataUserType)):
+													$i=0;
+													foreach ($dataUserType as $key => $value):
+												?>		
+														<option> <?php echo $value['type']; ?></option>
+												<?php
+												if($i++ == 1) break;
+												endforeach;
+												endif;
+												?>
+												</select>
+											</div>
+											<div class="form-group">
+												<label>Password</label>
+												<input type="password" name="upass2" class="form-control"  required="required">
+											</div>
+											<div class="form-group">
+												<input type="submit" class="btn btn-primary" value="Update">
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div><div class="tab-pane fade" id="addnew">
+							<form action="tmb_userAdd_act.php" method="post">
+							<!-- <div class="profile-section">
+								<h2 class="profile-heading">Profile Photo</h2>
+								<div class="media">
+									<div class="media-left">
+										<img src="assets/img/<?php echo $userDetails->foto; ?>" class="user-photo media-object" alt="User">
+									</div>
+									<div class="media-body">
+										<p>Upload photo.
+											<br> <em>Image should be at least 140px x 140px</em></p>
+										<button type="button" class="btn btn-default-dark" id="btn-upload-photo3">Upload Photo</button>
+										<input type="file" id="filePhoto3" name="ufoto3" class="sr-only">
+									</div>
+								</div>
+							</div> -->
+							<div class="form-group">
+								<label for="exampleInputFile" class="control-label">File Foto</label>
+								<input type="file" name="ufoto3" id="exampleInputFile">
+								<p class="help-block"><em>Cari file foto.</em></p>
+							</div>
+							<div class="profile-section">
+								<!-- <h2 class="profile-heading">Basic Information</h2> -->
+								<div class="clearfix">
+									<!-- LEFT SECTION -->
+									<div class="left">
+											<div class="form-group">
+												<label>Username</label>
+												<input type="text" name="uname3" class="form-control" placeholder="Isikan Nama" value="" required="required" >
+											</div>
+											<div class="form-group">
+												<label>Type</label>
+												<select class="form-control" name="utype3" required="required">
+												<?php
+												if (count($dataUserType)):
+													$i=0;
+													foreach ($dataUserType as $key => $value):
+												?>		
+														<option> <?php echo $value['type']; ?></option>
+												<?php
+												if($i++ == 1) break;
+												endforeach;
+												endif;
+												?>
+												</select>
+											</div>
+											<div class="form-group">
+												<label>Password</label>
+												<input type="password" name="upass3" class="form-control"  required="required">
+											</div>
+											<div class="form-group">
+												<input type="submit" class="btn btn-primary" value="Update">
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+				</div>	
+
+				
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		// photo upload
+		$('#btn-upload-photo').on('click', function() {
+			$(this).siblings('#filePhoto').trigger('click');
+		});
+		// photo upload
+		$('#btn-upload-photo2').on('click', function() {
+			$(this).siblings('#filePhoto2').trigger('click');
+		});
+		// photo upload
+		$('#btn-upload-photo3').on('click', function() {
+			$(this).siblings('#filePhoto3').trigger('click');
+		});
+
+		// plans
+		$('.btn-choose-plan').on('click', function() {
+			$('.plan').removeClass('selected-plan');
+			$('.plan-title span').find('i').remove();
+
+			$(this).parent().addClass('selected-plan');
+			$(this).parent().find('.plan-title').append('<span><i class="fa fa-check-circle"></i></span>');
+		});
+	});
+	</script>
 	
 </body>
 <?php include 'footer.php'; ?>

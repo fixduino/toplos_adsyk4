@@ -63,8 +63,15 @@ $qupd_tank7 = mysql_query("UPDATE tb_tank SET patarget = '$target7',pa = '$pa7' 
 $qupd_tank8 = mysql_query("UPDATE tb_tank SET patarget = '$target8',pa = '$pa8' WHERE id = '8' LIMIT 1;");
 
 
+$target="";
+// if(isset($tankm[$t])) {
+//   $TankMaint .=$tankm[$t].',';
+// }
 for ($x = 1; $x < 9; $x++) {
-   // echo "The number is: $x <br>";
+	// $qupd_tank1 = mysql_query("UPDATE tb_tank SET patarget = ${'target' . $x}, pa = ${'pa' . $x} WHERE id = {$x} LIMIT 1;");
+	//echo $target .= $tankx[$x].',';
+
+	
 	//$qupd_tank = mysql_query("UPDATE tb_tank SET patarget = '{$target+$x}',pa = '{$pa+$x}' WHERE id = '{$x}' LIMIT 1;");
 	} 
 

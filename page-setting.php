@@ -215,7 +215,7 @@ include 'admin/config.php';
 								?>
 							<div class="form-group">
 							<span class="help-block">cth. 500/2500</span>
-							<span class="help-block"> target sisa 500L, dari Total Pa Actual 2500L.</span>
+							<span class="help-block"> Target unpumpable 500L, dari Stok Aktual 2500L</span>
 							</div>
 							<div class="input-group">
 								<!-- <span class="input-group-addon">T08</span>
@@ -461,7 +461,7 @@ include 'admin/config.php';
 							<div class="input-group">
 					
 							<span class="input-group-addon danger"><?php echo $value['tank'] ?></span>
-							<input name="tank<?php echo $value['id'];?>" class="form-control" type="text" value="<?php echo number_format($value['patarget']); echo"/"; echo number_format($value['pa']); ?>" required="required">
+							<input name="tank<?php echo $value['id'];?>" class="form-control" placeholder="set target unpumpable/stok aktual cth. 500/2500" type="text" value="<?php echo ($value['patarget']); echo"/"; echo ($value['pa']); ?>" required="required">
 							<span class="input-group-addon danger">Liter</span>
 							</div>
 							<br>
@@ -472,7 +472,7 @@ include 'admin/config.php';
 
 						<div class="form-group">
 						<span class="help-block">cth. 500/2500</span>
-						<span class="help-block"> sisa 500L, dari Total Pa 2500L.</span>
+						<span class="help-block"> Target unpumpable 500L, dari Stok Aktual 2500L.</span>
 						</div>
 						<div class="input-group">
 							<!-- <span class="input-group-addon">T08</span>

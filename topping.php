@@ -1,4 +1,5 @@
 <?php
+require_once 'session.php';
 class Topping {
     protected $id;
     protected $time;
@@ -43,6 +44,17 @@ class Topping {
 
         $dataRecentTop = $sth->fetchAll();
         return $dataRecentTop;
+    }
+    public function get5RecentLos(){
+        $db = getDB();
+        $sth = $db->prepare('SELECT tb_loss.*, tb_bridger.kode AS bridnya, tb_tank.tank as tangkinya FROM tb_loss
+        INNER JOIN tb_bridger ON tb_loss.brid = tb_bridger.id
+        INNER JOIN tb_tank ON tb_loss.tank_tujuan = tb_tank.id
+        GROUP BY tb_loss.id DESC');
+        $sth->execute();
+
+        $dataRecentLos = $sth->fetchAll();
+        return $dataRecentLos;
     }
     public function getTopActive(){
         $db = getDB();
@@ -117,7 +129,7 @@ class Topping {
         $dataTotalTop = $sth->fetchAll();
         return $dataTotalTop;
     }
-    public function getTotalUllage() { //total top this day
+    public function getTotalUllage() { //total Ullage
         $db = getDB();
         $sth = $db->prepare('SELECT SUM(tb_tank.pa) AS totalstok,SUM(tb_tank.max_pa - tb_tank.pa) AS totalullage
         FROM tb_tank');
@@ -127,7 +139,8 @@ class Topping {
         $dataTotalUllage = $sth->fetchAll();
         return $dataTotalUllage;
     }
-    public function getTotalLos() {
+  
+    public function getTotalLos() { //total los this day
         $db = getDB();
         $sth = $db->prepare('SELECT id, DATE_FORMAT(tb_loss.time, "%Y-%m-%d") AS tglnow, SUM(tb_loss.qty_req) AS totallos
         FROM tb_loss
@@ -145,5 +158,73 @@ class Topping {
 
         $data = $sth->fetchAll();
         return $data;
+    }
+    // if(!empty($_SESSION['id']))
+    // {
+    // $session_id=$_SESSION['id'];
+    // include('users.php');
+    // $userClass = new userClass();
+    // }
+    public function getDataUser() { //total Ullage
+        $db = getDB();
+        $sth = $db->prepare("SELECT users.username FROM users WHERE NOT username='admin' " );
+
+        $sth->execute();
+        
+        $dataDetailUser = $sth->fetchAll();
+        return $dataDetailUser;
+    }
+    public function getDataUserType() { //total Ullage
+        $db = getDB();
+        $sth = $db->prepare("SELECT type FROM tb_type GROUP BY id DESC " );
+
+        $sth->execute();
+        
+        $dataUserType = $sth->fetchAll();
+        return $dataUserType;
+    }
+
+
+// $TopLastWeek = new Topping();
+// $dataTopLastWeek = $TopLastWeek->getDataTopLastWeek();
+// $TopThisWeek = new Topping();
+// $dataTopThisWeek = $TopThisWeek->getDataTopThisWeek();
+
+
+    public function getDataTopLastWeek() { //total Ullage
+        $db = getDB();
+        $sth = $db->prepare("SELECT tb_topp.*, SUM(qty_req) AS totTopLastWeek FROM tb_topp WHERE TIME BETWEEN (NOW() - INTERVAL 14 DAY) AND (NOW() - INTERVAL 7 DAY)" );
+
+        $sth->execute();
+        
+        $dataTopLastWeek = $sth->fetchAll();
+        return $dataTopLastWeek;
+    }
+    public function getDataTopThisWeek() { //total Ullage
+        $db = getDB();
+        $sth = $db->prepare("SELECT tb_topp.*, SUM(qty_req) AS totTopThisWeek  FROM tb_topp  WHERE TIME BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()" );
+
+        $sth->execute();
+        
+        $dataTopThisWeek = $sth->fetchAll();
+        return $dataTopThisWeek;
+    }
+    public function getDataLosLastWeek() { //total Ullage
+        $db = getDB();
+        $sth = $db->prepare("SELECT tb_loss.*, SUM(qty_req) AS totLosLastWeek FROM tb_loss WHERE TIME BETWEEN (NOW() - INTERVAL 14 DAY) AND (NOW() - INTERVAL 7 DAY)" );
+
+        $sth->execute();
+        
+        $dataLosLastWeek = $sth->fetchAll();
+        return $dataLosLastWeek;
+    }
+    public function getDataLosThisWeek() { //total Ullage
+        $db = getDB();
+        $sth = $db->prepare("SELECT tb_loss.*, SUM(qty_req) AS totLosThisWeek  FROM tb_loss  WHERE TIME BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW()" );
+
+        $sth->execute();
+        
+        $dataLosThisWeek = $sth->fetchAll();
+        return $dataLosThisWeek;
     }
 }

@@ -80,7 +80,7 @@ if(!empty($_POST['loginSubmit'])) {
 				<div class="errorMsg"><?php echo $errorMsgLogin; ?></div>			
 				<input type="submit" class="btn btn-success" name="loginSubmit" value="Login">
 				</div>
-				<label>Don't have account yet ! <a href="sing-up.php">Sign Up</a></label>
+				<!-- <label>Don't have account yet ! <a href="sing-up.php">Sign Up</a></label> -->
 			</div>
 		</div>
 		</form> 

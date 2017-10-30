@@ -68,7 +68,7 @@ class userClass
      {
         try{
           $db = getDB();
-          $stmt = $db->prepare("SELECT username,foto,type FROM users WHERE id=:id");  
+          $stmt = $db->prepare("SELECT username,foto,type,password FROM users WHERE id=:id");  
           $stmt->bindParam("id", $uid,PDO::PARAM_INT);
           $stmt->execute();
           $data = $stmt->fetch(PDO::FETCH_OBJ);
