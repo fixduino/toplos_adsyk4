@@ -13,7 +13,7 @@ $lossing = new Topping();
 $dataAllLoss = $lossing->getAllLoss();
 ?>
 <head>
-	<title>Dashboard | pertamina DPPU Adisucipto</title>
+	<title>Topping Lossing Pertamina DPPU Adisucipto</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -114,11 +114,12 @@ $dataAllLoss = $lossing->getAllLoss();
 				<li class="">
 					<a href="page-data-top.php" class="has-arrow"><i class="lnr lnr-chart-bars"></i> <span>Topping</span></a>
 				</li>
-				<?php if ($userDetails->type == 'superuser'){
-					echo '<li class="">
-					<a href="page-setting.php" class="has-arrow" aria-expanded="false"><i class="lnr lnr-cog"></i> <span>Setting</span></a>
-				</li>';
-				} ?>
+				<?php 
+							if (($userDetails->type == 'superuser')||($userDetails->type == 'admin')){
+							echo '<li class="">
+							<a href="page-setting.php" class="has-arrow" aria-expanded="false"><i class="lnr lnr-cog"></i> <span>Setting</span></a>
+						</li>';
+						} ?>
 				 <!-- <li class="">
 					<a href="page-setting.php" class="has-arrow" aria-expanded="false"><i class="lnr lnr-cog"></i> <span>Setting</span></a>
 				</li> -->
@@ -138,6 +139,16 @@ $dataAllLoss = $lossing->getAllLoss();
 						<div class="section-heading">
 							<h1 class="page-title">Data Topping & Lossing</h1>
 						</div>
+						<!-- <div class="input-group">
+								<input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalRef">
+							</div> -->
+							
+						<?php if ($userDetails->type == 'superuser'){
+							echo '<div class="section-heading clearfix">
+							<a href="" data-toggle="modal" data-target="#myModalEditTop" class="right">Edit Data Topping Lossing</a>
+						</div>';
+						} ?>
+						
 						<div class="row">
 							<div class="col-md-12">
 
@@ -310,6 +321,9 @@ $dataAllLoss = $lossing->getAllLoss();
 		});
 
 	</script>
+
+
+
 </body>
 <?php include 'footer.php'; ?>
 </html>

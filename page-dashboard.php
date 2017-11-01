@@ -70,7 +70,7 @@ $data = $dataTangki->getAll();
 ?>
 
 <head>
-	<title>Pertamina DPPU Adisucipto</title>
+	<title>Topping Lossing Pertamina DPPU Adisucipto</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -174,7 +174,7 @@ $data = $dataTangki->getAll();
 							<a href="page-data-top.php" class="has-arrow"><i class="lnr lnr-chart-bars"></i> <span>Topping</span></a>
 						</li>
 						<?php 
-							if ($userDetails->type == 'superuser'){
+							if (($userDetails->type == 'superuser')||($userDetails->type == 'admin')){
 							echo '<li class="">
 							<a href="page-setting.php" class="has-arrow" aria-expanded="false"><i class="lnr lnr-cog"></i> <span>Setting</span></a>
 						</li>';

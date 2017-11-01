@@ -23,6 +23,14 @@ $DetailUsers = new Topping();
 $dataDetailUser = $DetailUsers->getDataUser();
 $listUserType = new Topping();
 $dataUserType = $listUserType->getDataUserType();
+
+$tangki = new Tangki();
+$data = $tangki->getAll();
+
+$refuler = new Tangki();
+$dataRef = $refuler->getRefAll();
+$bridger = new Tangki();
+$dataBrid = $bridger->getBridgerAll();
 ?>
 
 
@@ -207,8 +215,9 @@ $dataUserType = $listUserType->getDataUserType();
 														foreach ($dataUserType as $key => $value):
 													?>		
 															<option> <?php 
-															if (($userDetails->type=='superuser') and ($userDetails->username=='admin')){ echo 'superuser';} 
-															elseif (($userDetails->type=='superuser') && ($userDetails->username!='admin')){ echo $value['type'];}	
+															if (($userDetails->type=='superuser') and ($userDetails->username=='superuser')){ echo 'superuser';} 
+															elseif (($userDetails->type=='superuser') && ($userDetails->username!='superuser')){ echo $value['type'];}
+															elseif (($userDetails->type=='admin') && ($userDetails->username=='admin')){  echo 'admin';}	
 															else { echo 'operator';}
 															?></option>
 													<?php
@@ -366,3 +375,183 @@ $dataUserType = $listUserType->getDataUserType();
 		</div>
 	</div>
 </div>
+
+
+<!-- Edit Topping -->
+<div id="myModalEditTop" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Topping</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<!-- <div class="section-heading">
+						<h1 class="page-title">User Profile</h1>
+					</div> -->
+					<ul class="nav nav-tabs" role="tablist">
+						<?php if ($userDetails->type=='superuser'){
+							echo '<li class="active"><a href="#editTop" role="tab" data-toggle="tab">Edit</a></li>';
+							echo '<li><a href="#hapusTop" role="tab" data-toggle="tab">Hapus</a></li>';
+						} else{}; ?>
+						
+						
+					</ul>
+				</div>
+				<!-- <form> -->
+				<div class="tab-content content-profile">
+						<!-- MY PROFILE -->
+						<div class="tab-pane fade in active" id="editTop">
+							<form action="tmb_toppEdit_act.php" method="post">
+								
+								<div class="profile-section">
+									<!-- <h2 class="profile-heading">Basic Information</h2> -->
+									<div class="clearfix">
+										<!-- LEFT SECTION -->
+										<div class="left">
+											<div class="form-group">
+												<label>Topp Id</label>
+												<select class="form-control" name="topid" required="required">
+												<?php
+												if (count($dataAllTop)):
+													foreach ($dataAllTop as $key => $value):
+												?>		
+														<option> <?php echo $value['id']; ?></option>
+												<?php
+												endforeach;
+												endif;
+												?>
+												</select>
+											</div>
+											
+											<div class="input-group">
+												<span class="input-group-btn"><button class="btn btn-info" type="button" >Refuler Id</button></span>
+												<select class="form-control" name="refid" required="required">
+														<?php if (count($dataRef)):
+																$i = 0;
+																foreach ($dataRef as $key => $value):
+															?>
+														
+															<option> <?php echo $value['kode']?></option>
+														<?php
+														if($i++ == 15) break;
+															endforeach;
+														endif;
+														?>	
+														</select>
+											</div>
+											<br>
+											<!-- <div class="form-group">
+												<label>Tangki Asal</label>
+												<input type="text" name="upass" class="form-control" placeholder="Masukkan Refuler Id"  required="required">
+											</div> -->
+											<div class="input-group">
+												<span class="input-group-btn"><button class="btn btn-info" type="button" >Tangki asal</button></span>
+												<!-- <input name="refid" class="form-control" type="text" placeholder="Masukkan id Refuler cth. 1" > -->
+												
+												<select class="form-control" name="refid" required="required">
+														<?php if (count($data)):
+																$i = 0;
+																foreach ($data as $key => $value):
+															?>
+														
+															<option> <?php echo $value['tank']?></option>
+														<?php
+														if($i++ == 7) break;
+															endforeach;
+														endif;
+														?>	
+														</select>
+											</div>
+											<br>
+											<div class="form-group">
+												<label>Quantity (L)</label>
+												<input type="text" name="toppqty" class="form-control" placeholder="Masukkan Qty Revisi cth. 650"  required="required">
+<!-- 														
+												<div class="col-sm-12">
+													<div class="row">
+													
+														<div class="col-md-9">
+															<input type="text" name="toppqty" class="form-control" placeholder="Masukkan Quantity Revisi cth. 650"  required="required">
+														</div>
+													</div>
+												</div> -->
+											</div>
+											<br>
+											<div class="form-group">
+												<input type="submit" class="btn btn-primary" value="Simpan">	
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</form >
+						</div>
+						<!-- edit other user -->
+						<div class="tab-pane fade" id="hapusTop">
+							<form action="tmb_toppDelete_act.php" method="post">
+							<div class="profile-section">
+								<!-- <h2 class="profile-heading">Basic Information</h2> -->
+								<div class="clearfix">
+									<!-- LEFT SECTION -->
+									<div class="left">
+											<div class="form-group">
+												<label>Topp Id</label>
+												<select class="form-control" name="topidnya" required="required">
+												<?php
+												if (count($dataAllTop)):
+													foreach ($dataAllTop as $key => $value):
+												?>		
+														<option> <?php echo $value['id']; ?></option>
+												<?php
+												endforeach;
+												endif;
+												?>
+												</select>
+											</div>
+											<div class="form-group">
+												<input type="submit" class="btn btn-danger" value="Hapus">
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						
+
+				</div>	
+
+				
+				
+			</div>
+			
+
+
+		</div>
+		<div class="modal-footer">
+			
+			</div>
+	</div>
+</div>
+
+<style>
+.modal-header {
+   min-height: 16.42857143px;
+  padding: 15px;
+  border-bottom: 3px solid #ff0000;
+  <!---->  
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: #009EDF;
+}
+
+.modal-footer {
+   min-height: 16.42857143px;
+  padding: 15px;
+  border-bottom: 3px solid #ff0000;
+  <!---->  
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: #009EDF;
+}
+	</style> 

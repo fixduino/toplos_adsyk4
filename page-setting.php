@@ -34,7 +34,7 @@ include 'admin/config.php';
 
 ?>
 <head>
-	<title>Dashboard | pertamina DPPU Adisucipto</title>
+	<title>Topping Lossing Pertamina DPPU Adisucipto</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -165,10 +165,11 @@ include 'admin/config.php';
 				<li class="">
 					<a href="page-data-top.php" class="has-arrow"><i class="lnr lnr-chart-bars"></i> <span>Topping</span></a>
 				</li>
-				<?php if ($userDetails->type == 'superuser'){
-					echo '<li class="">
-					<a href="page-setting.php" class="has-arrow" aria-expanded="false"><i class="lnr lnr-cog"></i> <span>Setting</span></a>
-				</li>';
+				<?php 
+							if (($userDetails->type == 'superuser')||($userDetails->type == 'admin')){
+							echo '<li class="">
+							<a href="page-setting.php" class="has-arrow" aria-expanded="false"><i class="lnr lnr-cog"></i> <span>Setting</span></a>
+						</li>';
 				} ?>
 				 <!-- <li class="">
 					<a href="page-setting.php" class="has-arrow" aria-expanded="false"><i class="lnr lnr-cog"></i> <span>Setting</span></a>
@@ -396,7 +397,7 @@ include 'admin/config.php';
 					<div class="form-group">
 						<label>Tangki Maint</label>
 							<div class="form-group">
-							<select id="multiselect2" name="tankm[]" class="multiselect multiselect-custom" multiple="multiple" required="required">
+							<select id="multiselect2" name="tankm[]" class="multiselect multiselect-custom" multiple="multiple" >
 								<?php if (count($data)):
 									 	$i = 0;
 									 	foreach ($data as $key => $value):
@@ -414,7 +415,7 @@ include 'admin/config.php';
 					<div class="form-group">
 						<label>Refuler Maint</label>
 							<div class="form-group">
-							<select id="multiselect1" name="refm[]" class="multiselect multiselect-custom" multiple="multiple" required="required">
+							<select id="multiselect1" name="refm[]" class="multiselect multiselect-custom" multiple="multiple">
 								<?php if (count($dataRef)):
 									 	$i = 0;
 									 	foreach ($dataRef as $key => $value):
@@ -564,7 +565,7 @@ include 'admin/config.php';
 		</div>
 	</div>
 </div>
-
+ 
 <div id="myModalRef" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">

@@ -167,7 +167,7 @@ class Topping {
     // }
     public function getDataUser() { //total Ullage
         $db = getDB();
-        $sth = $db->prepare("SELECT users.username FROM users WHERE NOT username='admin' " );
+        $sth = $db->prepare("SELECT users.username FROM users WHERE NOT username='superuser' " );
 
         $sth->execute();
         
