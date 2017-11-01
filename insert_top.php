@@ -31,37 +31,44 @@
 				//jika sukses update cek list data terakhir tanki
 					$cari = mysql_query("SELECT id,tank,pa,status FROM tb_tank ORDER BY id ASC")or die(mysql_error());
 					if ($cari !== false) {
-						$pa1=mysql_result($cari,0,"pa");
-						$tank1=mysql_result($cari,0,"tank");
-						$stat1=mysql_result($cari,0,"status");
-								
-						$pa2=mysql_result($cari,1,"pa");
-						$tank2=mysql_result($cari,1,"tank");
-						$stat2=mysql_result($cari,1,"status");
-								
-						$pa3=mysql_result($cari,2,"pa");
-						$tank3=mysql_result($cari,2,"tank");
-						$stat3=mysql_result($cari,2,"status");
-								
-						$pa4=mysql_result($cari,3,"pa");
-						$tank4=mysql_result($cari,3,"tank");
-						$stat4=mysql_result($cari,3,"status");
-								
-						$pa5=mysql_result($cari,4,"pa");
-						$tank5=mysql_result($cari,4,"tank");
-						$stat5=mysql_result($cari,4,"status");
-								
-						$pa6=mysql_result($cari,5,"pa");
-						$tank6=mysql_result($cari,5,"tank");
-						$stat6=mysql_result($cari,5,"status");
-								
-						$pa7=mysql_result($cari,6,"pa");
-						$tank7=mysql_result($cari,6,"tank");
-						$stat7=mysql_result($cari,6,"status");
-								
-						$pa8=mysql_result($cari,7,"pa");
-						$tank8=mysql_result($cari,7,"tank");
-						$stat8=mysql_result($cari,7,"status");
+							$pa1=mysql_result($cari,0,"pa"); 
+						   $tank1=mysql_result($cari,0,"tank");
+						   $stat1=mysql_result($cari,0,"status");
+						   if ($pa1==0){$pa1="BLOKIR"; }
+						   
+						   $pa2=mysql_result($cari,1,"pa");
+						   $tank2=mysql_result($cari,1,"tank");
+						   $stat2=mysql_result($cari,1,"status");
+						   if ($pa2==0){$pa2="BLOKIR"; }
+						   
+						   $pa3=mysql_result($cari,2,"pa");
+						   $tank3=mysql_result($cari,2,"tank");
+						   $stat3=mysql_result($cari,2,"status");
+						   if ($pa3==0){$pa3="BLOKIR"; }
+						   
+						   $pa4=mysql_result($cari,3,"pa");
+						   $tank4=mysql_result($cari,3,"tank");
+						   $stat4=mysql_result($cari,3,"status");
+						   if ($pa4==0){$pa4="BLOKIR"; }
+						   
+						   $pa5=mysql_result($cari,4,"pa");
+						   $tank5=mysql_result($cari,4,"tank");
+						   $stat5=mysql_result($cari,4,"status");
+						   if ($pa5==0){$pa5="BLOKIR"; }
+						   
+						   $pa6=mysql_result($cari,5,"pa");
+						   $tank6=mysql_result($cari,5,"tank");
+						   $stat6=mysql_result($cari,5,"status");
+							if ($pa6==0){$pa6="BLOKIR"; }
+							
+						   $pa7=mysql_result($cari,6,"pa");
+						   $tank7=mysql_result($cari,6,"tank");
+						   $stat7=mysql_result($cari,6,"status");
+						   if ($pa7==0){$pa7="BLOKIR"; }
+						   $pa8=mysql_result($cari,7,"pa");
+						   $tank8=mysql_result($cari,7,"tank");
+							$stat8=mysql_result($cari,7,"status");
+						   if ($pa8==0){$pa8="BLOKIR"; }
 								
 					}
 					/*
@@ -98,6 +105,7 @@
 					
 					}
 					$TankLoss= substr($TankLoss, 0, strlen($TankLoss) - 1);
+					if ($TankLoss==""){$TankLoss="N/A";}
 					// echo $TankLoss;
 					
 					//cari tank aktif topping
@@ -118,6 +126,8 @@
 					//update list tanktop:
 					// $TankTops .='-'.$TankTopActiv;
 					$ListTankTops = $TankTopActiv."-".$TankTops;
+					if ($ListTankTops==""){$ListTankTops="N/A";}
+					
 					
 					// INSERT record into tb_topp
 					$Sqlinserttopp="INSERT into tb_topp (time, ref, qty_req, tank_asal )  values ( '".$tgljam."','".$refuler."','".$request."','".$tank."')";
@@ -183,6 +193,7 @@
 						*/
 					echo "parsing result:"; echo "</br>";
 					echo "*";
+					
 					echo $tank1.":".$pa1OK.",".$tank2.":".$pa2OK.",".$tank3.":".$pa3OK.",".$tank4.":".$pa4OK.",".$tank5.":".$pa5OK.",".$tank6.":".$pa6OK.",".$tank7.":".$pa7OK.",".$tank8.":".$pa8OK."";
 					echo ",TOP:".$ListTankTops."|,LOS:".$TankLoss."$,ACTIVE:".$TankTopActiv.",R".$refuler1.":".$qtyReq1OK."^,R".$refuler2.":".$qtyReq2OK."~,R".$refuler3.":".$qtyReq3OK."@,R".$refuler4.":".$qtyReq4OK."";
 					// ,".$topTankAktifOK.",".$ListTopTankOK.",".$LosTankAktifOK.",".$ListLosTankOK."]|"; //echo "AKTIFNIH[".$tt1_topAktif."]|";"ZZ[".$tt1.",".$tt2.",".$tt3."]|";

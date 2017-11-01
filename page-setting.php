@@ -148,8 +148,7 @@ include 'admin/config.php';
 			<div class="dropdown">
 				<a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong><?php echo $userDetails->username; ?></strong> <i class="fa fa-caret-down"></i></a>
 				<ul class="dropdown-menu dropdown-menu-right account">
-					<li><a href="#">My Profile</a></li>
-					<li><a href="#">Settings</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#myModalProfile">Setting</a></li>
 					<li class="divider"></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>

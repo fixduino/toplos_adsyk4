@@ -19,6 +19,6 @@ if($qcek_user!=false){
     $idnya=mysql_result($qcek_user,0,"id");echo $idnya;
     $qupd_tank = mysql_query("UPDATE users SET type = '$utype', password = '$hash_password' , foto = '$ufoto' WHERE id = '$idnya' LIMIT 1;");
 }
-// header("location:page-dashboard.php");
+header("location:page-dashboard.php");
 
  ?>
