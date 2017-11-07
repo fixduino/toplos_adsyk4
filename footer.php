@@ -404,7 +404,6 @@ $dataBrid = $bridger->getBridgerAll();
 						<!-- MY PROFILE -->
 						<div class="tab-pane fade in active" id="editTop">
 							<form action="tmb_toppEdit_act.php" method="post">
-								
 								<div class="profile-section">
 									<!-- <h2 class="profile-heading">Basic Information</h2> -->
 									<div class="clearfix">
@@ -412,7 +411,7 @@ $dataBrid = $bridger->getBridgerAll();
 										<div class="left">
 											<div class="form-group">
 												<label>Topp Id</label>
-												<select class="form-control" name="topid" required="required">
+												<select class="form-control" name="topid2" required="required">
 												<?php
 												if (count($dataAllTop)):
 													foreach ($dataAllTop as $key => $value):
@@ -427,7 +426,7 @@ $dataBrid = $bridger->getBridgerAll();
 											
 											<div class="input-group">
 												<span class="input-group-btn"><button class="btn btn-info" type="button" >Refuler Id</button></span>
-												<select class="form-control" name="refid" required="required">
+												<select class="form-control" name="refid2" required="required">
 														<?php if (count($dataRef)):
 																$i = 0;
 																foreach ($dataRef as $key => $value):
@@ -450,7 +449,7 @@ $dataBrid = $bridger->getBridgerAll();
 												<span class="input-group-btn"><button class="btn btn-info" type="button" >Tangki asal</button></span>
 												<!-- <input name="refid" class="form-control" type="text" placeholder="Masukkan id Refuler cth. 1" > -->
 												
-												<select class="form-control" name="refid" required="required">
+												<select class="form-control" name="tankid2" required="required">
 														<?php if (count($data)):
 																$i = 0;
 																foreach ($data as $key => $value):
@@ -467,7 +466,7 @@ $dataBrid = $bridger->getBridgerAll();
 											<br>
 											<div class="form-group">
 												<label>Quantity (L)</label>
-												<input type="text" name="toppqty" class="form-control" placeholder="Masukkan Qty Revisi cth. 650"  required="required">
+												<input type="text" name="topqty2" class="form-control" placeholder="Masukkan Qty Revisi cth. 650"  required="required">
 <!-- 														
 												<div class="col-sm-12">
 													<div class="row">
@@ -485,9 +484,9 @@ $dataBrid = $bridger->getBridgerAll();
 										</div>
 									</div>
 								</div>
-
 							</form >
 						</div>
+
 						<!-- edit other user -->
 						<div class="tab-pane fade" id="hapusTop">
 							<form action="tmb_toppDelete_act.php" method="post">

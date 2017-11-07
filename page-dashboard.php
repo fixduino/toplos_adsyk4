@@ -497,7 +497,11 @@ $data = $dataTangki->getAll();
 													<td><span class="text-info"><?php echo number_format($value['totTopThisWeek'])?>L</span></td>
 
 													<!-- <td><span class="text-info">3000</span></td> -->
-													<td><span class="text-success"><?php $selisih = $value1['totTopLastWeek'] - $value['totTopThisWeek']; $gapPersen=($selisih/($value1['totTopLastWeek'])*100); echo  number_format($gapPersen,1);  ?>%</span></td>
+													<td><span class="text-success"><?php 
+														if ($value1['totTopLastWeek']>0){
+														$selisih = $value1['totTopLastWeek'] - $value['totTopThisWeek'];
+														 $gapPersen=($selisih/($value1['totTopLastWeek'])*100); echo  number_format($gapPersen,1);
+														 } else { echo "N/A";}  ?>%</span></td>
 													
 													<?php
 														endforeach;
@@ -526,7 +530,11 @@ $data = $dataTangki->getAll();
 													<td><span class="text-info"><?php echo number_format($value3['totLosThisWeek'])?>L</span></td>
 
 													<!-- <td><span class="text-info">3000</span></td> -->
-													<td><span class="text-success"><?php $selisih = $value2['totLosLastWeek'] - $value3['totLosThisWeek']; $gapPersen=($selisih/($value2['totLosLastWeek'])*100); echo  number_format($gapPersen,1);  ?>%</span></td>
+													<td><span class="text-success"><?php 
+														if ($value2['totLosLastWeek']>0){
+													$selisih = $value2['totLosLastWeek'] - $value3['totLosThisWeek']; 
+													$gapPersen=($selisih/($value2['totLosLastWeek'])*100); echo  number_format($gapPersen,1); 
+													} else { echo "N/A";} ?>%</span></td>
 													
 													<?php
 														endforeach;

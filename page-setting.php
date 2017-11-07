@@ -269,6 +269,10 @@ include 'admin/config.php';
 									<input class="form-control" type="text" value="<?php echo $value['refmaint'] ?>" disabled>
 								</div>
 								<br>
+								<?php
+									endforeach;
+								endif;
+								?>
 								<div class="input-group">
 									<input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalPlan">
 									<div class="input-group">
@@ -276,10 +280,7 @@ include 'admin/config.php';
 									<!-- <input type="submit" class="btn btn-info" value="Update3" data-toggle="modal" data-target="#myModalLoss"> -->
 									</div>
 								</div>
-								<?php
-									endforeach;
-								endif;
-								?>
+							
 								
 							
 										
@@ -314,15 +315,15 @@ include 'admin/config.php';
 								</div>
 
 								<br>
-								
-								<div class="input-group">
-									<!-- <input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalLos"> -->
-									<input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalLoss">
-								</div>
 								<?php
 									endforeach;
 								endif;
 								?>	
+								<div class="input-group">
+									<!-- <input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalLos"> -->
+									<input type="submit" class="btn btn-info" value="Update" data-toggle="modal" data-target="#myModalLoss">
+								</div>
+								
 							
 										
 						</div>
